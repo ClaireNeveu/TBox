@@ -16,5 +16,5 @@ showables.foreach(show)
 TBox can only create instances for single-parameter type-classes where each 
 abstract method takes a value of the parameterized type as an argument.
 
-Therefore you cannot instantiate a `TBox[Applicative]` because `pure` 
-cannot be defined in `Applicative[TBox[Applicative]]`.
+Therefore you cannot instantiate a `TBox[Num]` (as defined in Haskell) because `fromInteger` 
+cannot be defined in `Num[TBox[Num]]`.
