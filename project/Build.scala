@@ -10,18 +10,14 @@ object Build extends Build {
       "tbox",
       file("."),
       settings = commonSettings ++ Seq(
-         version := "0.1-SNAPSHOT",
-         libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-compiler" % _),
-			libraryDependencies ++= Seq(
-				"net.bytebuddy" % "byte-buddy" % "0.5.3"
-			)
+         libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-compiler" % _)
 		)
    )
 
    def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++
       Seq(
          organization := "tbox",
-         version      := "0.0.1-SNAPSHOT",
+         version      := "1.0.0",
          scalaVersion := "2.11.6",
          scalacOptions ++= Seq(
             "-unchecked",
