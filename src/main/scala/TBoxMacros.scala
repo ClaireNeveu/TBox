@@ -1,6 +1,6 @@
 package tbox
 
-import reflect.macros.blackbox.Context
+import reflect.macros.whitebox.Context
 
 private[tbox] object TBoxMacros {
    def instance[T[_]](c : Context)(implicit tt : c.WeakTypeTag[T[_]]) : c.Expr[T[TBox[T]]] = {
@@ -33,16 +33,15 @@ private[tbox] object TBoxMacros {
                   }
                   val funcArgs : List[Tree] = args.map(_._2)
                   val bodyArgs : List[Tree] = args.map(_._1)
-                  q"""def ${name}(..$funcArgs) =
-				$tboxArg.instance.$name(..$bodyArgs)"""
-					case _ ⇒ println(showRaw(t)); c.abort(NoPosition, "Unexpected abstract member type.")
+                  q"""def ${name}(..$funcArgs) = $tboxArg.instance.$name(..$bodyArgs)"""
+               case _ ⇒ c.abort(NoPosition, "Unexpected abstract member type.")
             }
-         case t ⇒ println(showRaw(t)); c.abort(NoPosition, "Unexpected abstract member.")
+         case t ⇒ c.abort(NoPosition, "Unexpected abstract member.")
       }
-      val tree = c.parse(showCode(q"""new $tt[tbox.TBox[$tt]] {
-			..$abstractMembers
+      val tree = c.parse(showCode(q"""
+         new $tt[tbox.TBox[$tt]] {
+			   ..$abstractMembers
 			}"""))
-      println(tree)
       c.Expr[T[TBox[T]]](tree)
    }
 }

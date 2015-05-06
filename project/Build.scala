@@ -6,18 +6,9 @@ import ScalariformKeys._
 
 object Build extends Build {
 
-   lazy val root: Project = Project(
-      "root",
-      file("."),
-      aggregate = Seq(base, examples),
-      settings = commonSettings ++ Seq(
-         publishArtifact := false
-      )
-   )
-
    lazy val base: Project = Project(
       "tbox",
-      file("tbox"),
+      file("."),
       settings = commonSettings ++ Seq(
          version := "0.1-SNAPSHOT",
          libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-compiler" % _),
@@ -26,14 +17,6 @@ object Build extends Build {
 			)
 		)
    )
-
-   lazy val examples: Project = Project(
-      "examples",
-      file("examples"),
-      settings = commonSettings ++ Seq(
-         version := "0.1-SNAPSHOT"
-      )
-   ).dependsOn(base)
 
    def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++
       Seq(
