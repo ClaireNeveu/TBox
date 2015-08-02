@@ -4,6 +4,7 @@ import scalariform.formatter.preferences._
 import com.typesafe.sbt.SbtScalariform._
 import ScalariformKeys._
 import com.typesafe.sbt.pgp.PgpSettings.useGpg
+import wartremover._
 
 object Build extends Build {
 
@@ -11,7 +12,9 @@ object Build extends Build {
       "tbox",
       file("."),
       settings = commonSettings ++ Seq(
-         libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-compiler" % _)
+         libraryDependencies ++= Seq(
+            "org.scala-lang" % "scala-compiler" % scalaVersion.value,
+            "org.scalatest" %% "scalatest" % "2.2.4" % "test")
 		)
    )
 
@@ -36,7 +39,7 @@ object Build extends Build {
      </developers>
    }
 
-   def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++
+   def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++ wartremoverSettings ++
       Seq(
          organization := "com.chrisneveu",
          version      := "1.0.0-SNAPSHOT",
@@ -48,6 +51,11 @@ object Build extends Build {
             "-language:higherKinds",
             "-language:postfixOps"
          ),
+         wartremoverErrors ++= Warts.allBut(
+            Wart.Any,
+            Wart.Nothing,
+            Wart.NonUnitStatements,
+            Wart.AsInstanceOf),
          useGpg := true,
          pomExtra := pomStuff,
          ScalariformKeys.preferences := ScalariformKeys.preferences.value
