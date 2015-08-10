@@ -55,10 +55,10 @@ class TBoxSpec extends FunSuite {
    }
 
    test("TBox should not work for Semigroup.") {
-      assertDoesNotCompile("""TBox[Semigroup](5) ++ TBox[Semigroup]("foo")"""")
+      assertTypeError("""TBox[Semigroup](5) ++ TBox[Semigroup]("foo")""")
    }
 
    test("TBox should not work for FromInteger.") {
-      assertDoesNotCompile("""TBox[FromInteger](5)"""")
+      assertTypeError("""implicitly[FromInteger[TBox[FromInteger]]]""")
    }
 }

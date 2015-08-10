@@ -54,6 +54,7 @@ object Build extends Build {
          wartremoverErrors ++= Warts.allBut(
             Wart.Any,
             Wart.Nothing,
+            Wart.Throw,
             Wart.NonUnitStatements,
             Wart.AsInstanceOf),
          useGpg := true,
