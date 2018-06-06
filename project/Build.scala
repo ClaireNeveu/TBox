@@ -42,7 +42,7 @@ object Build extends Build {
    def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++ wartremoverSettings ++
       Seq(
          organization := "com.claireneveu",
-         version      := "1.1.1",
+         version      := "1.1.1-SNAPSHOT",
          scalaVersion := "2.11.6",
          scalacOptions ++= Seq(
             "-unchecked",
