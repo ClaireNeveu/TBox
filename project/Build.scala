@@ -19,30 +19,30 @@ object Build extends Build {
    )
 
    lazy val pomStuff = {
-     <url>https://github.com/ChrisNeveu/TBox</url>
+     <url>https://github.com/ClaireNeveu/TBox</url>
      <licenses>
        <license>
          <name>BSD 3-Clause</name>
-         <url>https://raw.githubusercontent.com/ChrisNeveu/TBox/master/LICENSE</url>
+         <url>https://raw.githubusercontent.com/ClaireNeveu/TBox/master/LICENSE</url>
        </license>
      </licenses>
      <scm>
-       <connection>scm:git:github.com/ChrisNeveu/TBox.git</connection>
-       <developerConnection>scm:git:git@github.com:ChrisNeveu/TBox.git</developerConnection>
-       <url>git@github.com:ChrisNeveu/TBox</url>
+       <connection>scm:git:github.com/ClaireNeveu/TBox.git</connection>
+       <developerConnection>scm:git:git@github.com:ClaireNeveu/TBox.git</developerConnection>
+       <url>git@github.com:ClaireNeveu/TBox</url>
      </scm>
      <developers>
        <developer>
-         <name>Chris Neveu</name>
-         <url>chrisneveu.com</url>
+         <name>Claire Neveu</name>
+         <url>claireneveu.com</url>
        </developer>
      </developers>
    }
 
    def commonSettings = Defaults.defaultSettings ++ scalariformSettings ++ wartremoverSettings ++
       Seq(
-         organization := "com.chrisneveu",
-         version      := "1.1.1-SNAPSHOT",
+         organization := "com.claireneveu",
+         version      := "1.1.1",
          scalaVersion := "2.11.6",
          scalacOptions ++= Seq(
             "-unchecked",

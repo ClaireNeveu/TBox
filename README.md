@@ -4,7 +4,7 @@ Instances of the type-class used are automatically created for `TBox`.
 ## Getting TBox
 If you're using SBT, add the following to your build file.
 ```scala
-libraryDependencies += "com.chrisneveu" %% "tbox" % "1.1.0"
+libraryDependencies += "com.claireneveu" %% "tbox" % "1.1.0"
 ```
 
 ## API Documentation
